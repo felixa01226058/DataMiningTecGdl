@@ -1,0 +1,129 @@
+<html ng-app = "myApp">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Base de datos</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/3-col-portfolio.css" rel="stylesheet">
+        
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="angular-datatables/dist/angular-datatables.min.js"></script>   
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="angular-datatables-master/dist/angular-datatables.min.js"></script>
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script type="text/javascript" src = "app.js"></script>
+        <style type="text/css">
+        
+        a,h4{
+            color: #005DAA;
+            font-weight: bold;
+        }
+        </style>
+    </head>
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        BASE DE DATOS: TEC CAMPUS GDL
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div class="container" ng-controller = "tabla">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="page-header">
+                    SISTEMA DE RECOMENDACIONES-NODOS
+                </h4>
+                <p>La base de datos contiene filtros y subgrafos añadidos a la pagina del Tec campus Guadalajara,se aplicon un filtro de outliers para solo incluir categorias como: comida,musica,artistas,eventos,profesores y figuras publicas</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+             <table datatable="ng" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>PageRank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="nodo in nodo"  ng-click="testingClick(nodo)">
+                            <td>{{ nodo.id }}</td>
+                            <td>{{ nodo.name }}</td>
+                            <td>{{ nodo.categoria }}</td>
+                            <td>{{ nodo.pagerank }}</td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="page-header">
+                    RELACION DEL NODO ELEGIDO
+                </h4>
+                <p>Aqui se muestran el nodo elegido y sus relaciones en cuanto musica,artistas y sitios de comida</p>
+
+            </div>
+            <div class="row">
+             <table datatable="ng" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>PageRank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="vecino in vecinos" >
+                            <td>{{ vecino.id }}</td>
+                            <td>{{ vecino.name }}</td>
+                            <td>{{ vecino.categoria }}</td>
+                            <td>{{ vecino.pagerank}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+        </div>
+        </div>
+    </body>
+</html>
